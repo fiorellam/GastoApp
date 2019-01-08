@@ -49,6 +49,7 @@ public class ActivityAddExpense extends AppCompatActivity {
 
         consultClassificationList();
 
+
         //conexion entre el arreglo con lo que se va a desplegar en el componente spinner
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.support_simple_spinner_dropdown_item, list_classification);
         sp_classification.setAdapter(adapter);
@@ -126,6 +127,7 @@ public class ActivityAddExpense extends AppCompatActivity {
             Log.i("Nombre", classification.getNamee());
             Log.i("Limite", classification.getLimitt().toString());
         }
+        getList();
 
     }
 
