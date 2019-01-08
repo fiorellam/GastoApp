@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GastosApp</string>
+    <string name="concept">Concepto:</string>
+    <string name="amount">Monto:</string>
+    <string name="classification">Clasificación:</string>
+    <string name="add_button">Añadir</string>
+    <string name="date">Fecha:</string>
+
+    <string name="button_select_date">Elegir</string>
+    <string name="button_save">Guardar</string>
+
+    <string name="titleConfiguration">Configuración</string>
+    <string name="title_activity_add_classification">ActivityAddClassification</string>
+    <string name="add_new_category">Añadir Nueva Categoria</string>
+
+    <string name="classification_name">Clasificacion:</string>
+    <string name="classification_limit">Limite:</string>
+</resources>
