@@ -19,7 +19,8 @@
         <activity android:name=".ActivityAddExpense" />
         <activity android:name=".ActivityConfiguration" />
         <activity android:name=".ActivityExpensesCategory" />
-        <activity android:name=".ActivityAddClassification"></activity>
+        <activity android:name=".ActivityAddClassification" />
+        <activity android:name=".ActivityGeneralLimit"></activity>
     </application>
 
 </manifest>

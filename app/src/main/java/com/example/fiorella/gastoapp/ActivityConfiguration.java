@@ -31,8 +31,7 @@ public class ActivityConfiguration extends AppCompatActivity {
                 if(position == 0){
                     startActivity(new Intent(ActivityConfiguration.this, ActivityExpensesCategory.class));
                 }else if(position == 1){
-//                    TODO: Crear activity para modificar el limite general de gastos
-//                    startActivity(new Intent(ActivityConfiguration.this, ));
+                    startActivity(new Intent(ActivityConfiguration.this, ActivityGeneralLimit.class ));
                 }
             }
         });
