@@ -29,7 +29,7 @@ public class ActivityConfiguration extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    startActivity(new Intent(ActivityConfiguration.this, ActivityExpensesCategory.class));
+                    startActivity(new Intent(ActivityConfiguration.this, ActivityExpensesClassification.class));
                 }else if(position == 1){
                     startActivity(new Intent(ActivityConfiguration.this, ActivityGeneralLimit.class ));
                 }

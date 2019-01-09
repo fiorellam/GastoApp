@@ -20,4 +20,6 @@
     <string name="descriptionLimit">Cantidad total de Gastos que se quieren tener independientemente de su clasificacion</string>
     <string name="tv_limit">Limite:</string>
     <string name="number_limit">100</string>
+
+    <string name="button_delete">Eliminar</string>
 </resources>

@@ -3,17 +3,17 @@ package com.example.fiorella.gastoapp;
 import java.io.Serializable;
 
 public class Expense implements Serializable {
-    private long _id;
+    private Integer _id;
     private String _concept;
     private double _amount;
-    private String _classification;
+    private Integer _classification;
     private String _date;
 
     public long get_id() {
         return _id;
     }
 
-    public void set_id(long _id) {
+    public void set_id(Integer _id) {
         this._id = _id;
     }
 
@@ -33,11 +33,11 @@ public class Expense implements Serializable {
         this._amount = _amount;
     }
 
-    public String get_classification() {
+    public Integer get_classification() {
         return _classification;
     }
 
-    public void set_classification(String _classification) {
+    public void set_classification(Integer _classification) {
         this._classification = _classification;
     }
 

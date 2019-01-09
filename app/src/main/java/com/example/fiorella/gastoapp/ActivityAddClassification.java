@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.sql.SQLException;
-
 public class ActivityAddClassification extends AppCompatActivity {
 
     private EditText txt_classification, txt_classification_limit;
@@ -48,7 +46,7 @@ public class ActivityAddClassification extends AppCompatActivity {
 
             Toast.makeText(this, "Clasificación Agregada", Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(ActivityAddClassification.this, ActivityExpensesCategory.class));
+            startActivity(new Intent(ActivityAddClassification.this, ActivityExpensesClassification.class));
 
         }else{
             Toast.makeText(this, "Debes ingresar todos los datos", Toast.LENGTH_SHORT).show();

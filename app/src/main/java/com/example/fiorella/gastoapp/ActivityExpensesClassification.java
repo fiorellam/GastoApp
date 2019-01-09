@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ActivityExpensesCategory extends AppCompatActivity {
+public class ActivityExpensesClassification extends AppCompatActivity {
 
     ListView listView_settings;
 //    String [] options = {"Escuela", "Comida", "Cena", "Desayuno"};
@@ -23,7 +24,7 @@ public class ActivityExpensesCategory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses_category);
+        setContentView(R.layout.activity_expenses_classification);
 
         admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
 
@@ -32,14 +33,28 @@ public class ActivityExpensesCategory extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, list_classification_string);
-
-
         listView_settings.setAdapter(adapter);
+
+        listView_settings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Classification classification = classification_list_classification.get(position);
+
+                Intent intent = new Intent(ActivityExpensesClassification.this, ActivityEditClassification.class);
+//                intent.putExtra("id", classification.getClassification_id());
+                intent.putExtra("classification",classification);
+//                intent.putExtra("limit", classification.getLimitt());
+                startActivity(intent);
+
+                Log.i("NOMBEW", classification.getNamee());
+            }
+        });
 
 
     }
     public void addNewClassification(View view){
-        Intent intent = new Intent(ActivityExpensesCategory.this, ActivityAddClassification.class );
+        Intent intent = new Intent(ActivityExpensesClassification.this, ActivityAddClassification.class );
         startActivity(intent);
     }
 

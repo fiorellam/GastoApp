@@ -18,9 +18,10 @@
         </activity>
         <activity android:name=".ActivityAddExpense" />
         <activity android:name=".ActivityConfiguration" />
-        <activity android:name=".ActivityExpensesCategory" />
+        <activity android:name=".ActivityExpensesClassification" />
         <activity android:name=".ActivityAddClassification" />
-        <activity android:name=".ActivityGeneralLimit"></activity>
+        <activity android:name=".ActivityGeneralLimit" />
+        <activity android:name=".ActivityEditClassification"></activity>
     </application>
 
 </manifest>
