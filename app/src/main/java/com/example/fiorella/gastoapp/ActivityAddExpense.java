@@ -11,9 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,11 +56,14 @@ public class ActivityAddExpense extends AppCompatActivity {
         String classification_selection = sp_classification.getSelectedItem().toString();
         String date = setDate();
 
+
+
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
             try{
+                double amount_double = Double.parseDouble(amount_string);
                 ContentValues register_expense = new ContentValues();
                 register_expense.put("concept_name", concept_string);
-                register_expense.put("amount", amount_string);
+                register_expense.put("amount", amount_double);
                 register_expense.put("dateb", date);
                 register_expense.put("classification_id", classification_selection);
 
@@ -86,7 +87,6 @@ public class ActivityAddExpense extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         String fecha = dateFormat.format(date);
-        System.out.println(fecha);
         return fecha;
     }
 

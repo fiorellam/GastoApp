@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class ActivityAddClassification extends AppCompatActivity {
 
     private EditText txt_classification, txt_classification_limit;
+    int classification_limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,16 @@ public class ActivityAddClassification extends AppCompatActivity {
         String string_classification = txt_classification.getText().toString();
         String string_limit = txt_classification_limit.getText().toString();
 
+
+
         if(!string_classification.equals("") && !string_limit.equals("")){
             System.out.println(string_classification + "\n" + string_limit);
 
+            classification_limit = Integer.parseInt(string_limit);
+
             ContentValues register_classification = new ContentValues();
             register_classification.put("name", string_classification);
-            register_classification.put("limitt", string_limit);
+            register_classification.put("limitt", classification_limit);
 
             dataBase.insert("classification", null, register_classification);
             dataBase.close();
