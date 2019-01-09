@@ -1,6 +1,7 @@
 package com.example.fiorella.gastoapp;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,7 +32,6 @@ public class ActivityAddClassification extends AppCompatActivity {
         String string_limit = txt_classification_limit.getText().toString();
 
         if(!string_classification.equals("") && !string_limit.equals("")){
-//            TODO: Agregar a base de datos nueva clasificacion
             System.out.println(string_classification + "\n" + string_limit);
 
             ContentValues register_classification = new ContentValues();
@@ -42,6 +42,8 @@ public class ActivityAddClassification extends AppCompatActivity {
             dataBase.close();
 
             Toast.makeText(this, "Clasificación Agregada", Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(ActivityAddClassification.this, ActivityExpensesCategory.class));
 
         }else{
             Toast.makeText(this, "Debes ingresar todos los datos", Toast.LENGTH_SHORT).show();
