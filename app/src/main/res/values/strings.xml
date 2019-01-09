@@ -22,4 +22,6 @@
     <string name="number_limit">100</string>
 
     <string name="button_delete">Eliminar</string>
+
+    <string name="expenses">Gastos Hechos</string>
 </resources>

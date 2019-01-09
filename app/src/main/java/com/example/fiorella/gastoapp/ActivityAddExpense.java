@@ -88,6 +88,9 @@ public class ActivityAddExpense extends AppCompatActivity {
                 System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
 
                 Toast.makeText(this, "Gasto Agregado", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ActivityAddExpense.this, MainActivity.class);
+                startActivity(intent);
             }catch (SQLException sqlE){
                 sqlE.printStackTrace();
             }
