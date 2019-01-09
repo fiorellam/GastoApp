@@ -89,4 +89,9 @@ public class ActivityExpensesClassification extends AppCompatActivity {
             System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ActivityExpensesClassification.this, ActivityConfiguration.class));
+    }
 }

@@ -64,4 +64,8 @@ public class ActivityEditClassification extends AppCompatActivity {
         Toast.makeText(this, "Clasificacion Eliminada", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(ActivityEditClassification.this, ActivityExpensesClassification.class));
     }
+    @Override
+    public void onBackPressed(){
+
+    }
 }

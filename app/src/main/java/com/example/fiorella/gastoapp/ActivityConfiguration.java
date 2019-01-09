@@ -36,4 +36,9 @@ public class ActivityConfiguration extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ActivityConfiguration.this, MainActivity.class));
+    }
 }

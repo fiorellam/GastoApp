@@ -41,4 +41,8 @@ public class ActivityGeneralLimit extends AppCompatActivity {
         }
         dataBase.close();
     }
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ActivityGeneralLimit.this, ActivityConfiguration.class));
+    }
 }

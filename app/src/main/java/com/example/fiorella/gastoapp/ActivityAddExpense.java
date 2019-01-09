@@ -1,6 +1,7 @@
 package com.example.fiorella.gastoapp;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -137,6 +138,11 @@ public class ActivityAddExpense extends AppCompatActivity {
             list_classification_string.add(classification_list_classification.get(i).getNamee());
             System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ActivityAddExpense.this, MainActivity.class));
     }
 
 }
