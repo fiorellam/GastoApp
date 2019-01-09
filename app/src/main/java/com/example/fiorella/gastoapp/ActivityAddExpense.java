@@ -4,12 +4,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -25,13 +23,12 @@ public class ActivityAddExpense extends AppCompatActivity {
 
     private EditText txt_concept, txt_amount;
     private Spinner sp_classification;
-    private TextView tv1, tv2, tv3, tv4, tv5;
-    ArrayList<String> list_classification;
-    ArrayList<Classification> classification_list;
+    ArrayList<String> list_classification_string;
+    ArrayList<Classification> classification_list_classification;
 
-    //    private TextView tv_date;
-    String [] options = {"Escuela", "Comida", "Cena", "Desayuno"};
-//    TODO: cargar spinner desde la base de datos
+    AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
+
+//    String [] options = {"Escuela", "Comida", "Cena", "Desayuno"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +37,12 @@ public class ActivityAddExpense extends AppCompatActivity {
         txt_concept = (EditText)findViewById(R.id.txt_concept);
         txt_amount = (EditText)findViewById(R.id.txt_amount);
         sp_classification = (Spinner)findViewById(R.id.sp_classification);
-        tv1 = (TextView)findViewById(R.id.tv_id);
-        tv2 = (TextView)findViewById(R.id.tv_concept);
-        tv3 = (TextView)findViewById(R.id.tv_amount);
-        tv4 = (TextView)findViewById(R.id.tv_classification);
-        tv5 = (TextView)findViewById(R.id.tv_date);
-//        tv_date = (TextView)findViewById(R.id.tv_date);
 
         consultClassificationList();
 
 
         //conexion entre el arreglo con lo que se va a desplegar en el componente spinner
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(this, R.layout.support_simple_spinner_dropdown_item, list_classification);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list_classification_string);
         sp_classification.setAdapter(adapter);
     }
 
@@ -68,8 +59,6 @@ public class ActivityAddExpense extends AppCompatActivity {
         String date = setDate();
 
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
-            System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
-            //            TODO: Agregar nuevo gasto a bdSQLite y un toast con mensaje: "Se ha guardado nuevo gasto"
             try{
                 ContentValues register_expense = new ContentValues();
                 register_expense.put("concept_name", concept_string);
@@ -80,6 +69,7 @@ public class ActivityAddExpense extends AppCompatActivity {
                 dataBase.insert("expense", null, register_expense);
 
                 dataBase.close();
+                System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
 
                 Toast.makeText(this, "Gasto Agregado", Toast.LENGTH_SHORT).show();
             }catch (SQLException sqlE){
@@ -92,12 +82,6 @@ public class ActivityAddExpense extends AppCompatActivity {
 
 
     }
-
-//    public void showCalendar(View view){
-//        Intent intent = new Intent(Activity_amount_view.this, ActivityCalendar.class);
-//        startActivity(intent);
-//    }
-
     public String setDate(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
@@ -107,12 +91,12 @@ public class ActivityAddExpense extends AppCompatActivity {
     }
 
     private void consultClassificationList(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
+//        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
         //Abrimos base de datos en modo lectura y escritura
-        SQLiteDatabase dataBase = admin.getWritableDatabase();
+        SQLiteDatabase dataBase = admin.getReadableDatabase();
 
         Classification classification = null;
-        classification_list = new ArrayList<Classification>();
+        classification_list_classification = new ArrayList<Classification>();
 
         Cursor cursor = dataBase.rawQuery("select * from classification", null);
         while(cursor.moveToNext()){
@@ -121,22 +105,22 @@ public class ActivityAddExpense extends AppCompatActivity {
             classification.setNamee(cursor.getString(1));
             classification.setLimitt(cursor.getInt(2));
 
-            classification_list.add(classification);
+            classification_list_classification.add(classification);
 
             Log.i("id", classification.getClassification_id().toString());
             Log.i("Nombre", classification.getNamee());
             Log.i("Limite", classification.getLimitt().toString());
         }
         getList();
-
     }
 
     private void getList(){
-        list_classification = new ArrayList<String>();
-        list_classification.add("Seleccione");
+        list_classification_string = new ArrayList<String>();
 
-        for(int i=0; i<classification_list.size(); i++){
-            list_classification.add(classification_list.get(i).getNamee());
+        for(int i = 0; i< classification_list_classification.size(); i++){
+            list_classification_string.add(classification_list_classification.get(i).getNamee());
+            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
     }
+
 }
