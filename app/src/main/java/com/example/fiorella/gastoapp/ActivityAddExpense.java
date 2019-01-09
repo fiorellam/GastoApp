@@ -38,7 +38,6 @@ public class ActivityAddExpense extends AppCompatActivity {
 
         consultClassificationList();
 
-
         //conexion entre el arreglo con lo que se va a desplegar en el componente spinner
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list_classification_string);
         sp_classification.setAdapter(adapter);
@@ -56,16 +55,31 @@ public class ActivityAddExpense extends AppCompatActivity {
         String classification_selection = sp_classification.getSelectedItem().toString();
         String date = setDate();
 
+        Integer classification_id = 0;
+        String classification_name;
 
 
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
             try{
+
+                Cursor cursor = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
+                while(cursor.moveToNext()){
+                    classification_id = cursor.getInt(0);
+                    classification_name = cursor.getString(1);
+
+                    Log.i("id", classification_id.toString());
+                    Log.i("Nombre", classification_name);
+                }
+                getList();
+
                 double amount_double = Double.parseDouble(amount_string);
                 ContentValues register_expense = new ContentValues();
                 register_expense.put("concept_name", concept_string);
                 register_expense.put("amount", amount_double);
                 register_expense.put("dateb", date);
-                register_expense.put("classification_id", classification_selection);
+                register_expense.put("classification_id", classification_id);
+
+                System.out.println("CLASIFICACION ID DESPUES " + classification_id);
 
                 dataBase.insert("expense", null, register_expense);
 
@@ -80,6 +94,7 @@ public class ActivityAddExpense extends AppCompatActivity {
         else{
             Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }
+        dataBase.close();
 
 
     }
@@ -112,6 +127,7 @@ public class ActivityAddExpense extends AppCompatActivity {
             Log.i("Limite", classification.getLimitt().toString());
         }
         getList();
+        dataBase.close();
     }
 
     private void getList(){

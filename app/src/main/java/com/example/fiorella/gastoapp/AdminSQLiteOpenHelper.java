@@ -9,12 +9,26 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "GastosApp.db";
 
-    private static final String TABLE_CLASSIFICATION ="create table classification(classification_id integer primary key autoincrement," +
-            " name text, limitt int)";
-    private static final String TABLE_EXPENSE ="create table expense(expense_id integer primary key autoincrement," +
-            "concept_name text, amount real, dateb date, classification_id int," +
-            " FOREIGN KEY (classification_id) references classification(classification_id))";
+//    private static final String TABLE_CLASSIFICATION ="create table classification(classification_id integer primary key autoincrement," +
+//            " name text, limitt int)";
+//    private static final String TABLE_EXPENSE ="create table expense(expense_id integer primary key autoincrement," +
+//            "concept_name text, amount real, dateb date, classification_id int," +
+//            " FOREIGN KEY (classification_id) references classification(classification_id))";
+//    private static final String TABLE_GENERAL_CONFIGURATION = "create table general_configuration(general_limit integer)";
+
+    private static final String TABLE_CLASSIFICATION ="create table classification(classification_id integer primary key autoincrement not null," +
+            " name text not null, limitt int not null)";
+    private static final String TABLE_EXPENSE ="create table expense(expense_id integer primary key autoincrement not null,\n" +
+            "           concept_name text not null, amount real not null, dateb date not null, classification_id int not null,\n" +
+            "            FOREIGN KEY (classification_id) references classification(classification_id))";
     private static final String TABLE_GENERAL_CONFIGURATION = "create table general_configuration(general_limit integer)";
+
+    private static final String INSERT1 = "insert into classification(name, limitt)values('Deporte',9 )";
+    private static final String INSERT2 = "insert into classification(name, limitt)values('Comida',3 )";
+    private static final String INSERT3 = "insert into classification(name, limitt)values('Gasolina',5 )";
+    private static final String INSERT4 = "insert into classification(name, limitt)values('Ropa',6 )";
+    private static final String INSERT5 = "insert into classification(name, limitt)values('Entretenimiento',7 )";
+    private static final String INSERT6 = "insert into classification(name, limitt)values('Hogar',5 )";
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -25,6 +39,13 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(TABLE_CLASSIFICATION);
         db.execSQL(TABLE_EXPENSE);
         db.execSQL(TABLE_GENERAL_CONFIGURATION);
+
+        db.execSQL(INSERT1);
+        db.execSQL(INSERT2);
+        db.execSQL(INSERT3);
+        db.execSQL(INSERT4);
+        db.execSQL(INSERT5);
+        db.execSQL(INSERT6);
     }
 
     @Override
