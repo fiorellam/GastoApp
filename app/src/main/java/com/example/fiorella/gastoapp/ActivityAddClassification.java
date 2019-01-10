@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class ActivityAddClassification extends AppCompatActivity {
 
     private EditText txt_classification, txt_classification_limit;
-    int classification_limit;
+    int classification_limit, actual_limit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class ActivityAddClassification extends AppCompatActivity {
             ContentValues register_classification = new ContentValues();
             register_classification.put("name", string_classification);
             register_classification.put("limitt", classification_limit);
+            register_classification.put("actual_limit", actual_limit);
 
             dataBase.insert("classification", null, register_classification);
             dataBase.close();

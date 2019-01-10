@@ -8,10 +8,15 @@ public class Classification implements Serializable {
     private String namee;
     private Integer limitt;
 
-    public Classification(Integer classification_id, String namee, Integer limitt) {
+
+
+    private Integer actual_limit;
+
+    public Classification(Integer classification_id, String namee, Integer limitt, Integer actual_limit) {
         this.classification_id = classification_id;
         this.namee = namee;
         this.limitt = limitt;
+        this.actual_limit = actual_limit;
     }
 
     public Classification(){
@@ -40,5 +45,12 @@ public class Classification implements Serializable {
 
     public void setLimitt(Integer limitt) {
         this.limitt = limitt;
+    }
+    public Integer getActual_limit() {
+        return actual_limit;
+    }
+
+    public void setActual_limit(Integer actual_limit) {
+        this.actual_limit = actual_limit;
     }
 }

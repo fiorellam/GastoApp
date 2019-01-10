@@ -86,7 +86,7 @@ public class ActivityExpensesClassification extends AppCompatActivity {
 
         for(int i = 0; i< classification_list_classification.size(); i++){
             list_classification_string.add(classification_list_classification.get(i).getNamee());
-            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
+//            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
     }
 

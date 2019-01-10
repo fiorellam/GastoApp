@@ -24,6 +24,8 @@ public class ActivityAddExpense extends AppCompatActivity {
     private Spinner sp_classification;
     ArrayList<String> list_classification_string;
     ArrayList<Classification> classification_list_classification;
+    int actual_limit, classification_limi, classification_id;
+
 
     AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
 
@@ -63,34 +65,57 @@ public class ActivityAddExpense extends AppCompatActivity {
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
             try{
 
-                Cursor cursor = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
-                while(cursor.moveToNext()){
-                    classification_id = cursor.getInt(0);
-                    classification_name = cursor.getString(1);
+                Cursor cursor_expense = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
+                while(cursor_expense.moveToNext()){
+                    classification_id = cursor_expense.getInt(0);
+                    classification_name = cursor_expense.getString(1);
+
+                    classification_limi = cursor_expense.getInt(2);
+                    actual_limit = cursor_expense.getInt(3);
 
                     Log.i("id", classification_id.toString());
                     Log.i("Nombre", classification_name);
+                    Log.i("Limite", String.valueOf(cursor_expense.getInt(2)));
+                    Log.i("Limite Actual", String.valueOf(cursor_expense.getInt(3)));
                 }
                 getList();
 
-                double amount_double = Double.parseDouble(amount_string);
-                ContentValues register_expense = new ContentValues();
-                register_expense.put("concept_name", concept_string);
-                register_expense.put("amount", amount_double);
-                register_expense.put("dateb", date);
-                register_expense.put("classification_id", classification_id);
+                if(actual_limit<classification_limi){
+                    double amount_double = Double.parseDouble(amount_string);
+                    ContentValues register_expense = new ContentValues();
+                    register_expense.put("concept_name", concept_string);
+                    register_expense.put("amount", amount_double);
+                    register_expense.put("dateb", date);
+                    register_expense.put("classification_id", classification_id);
 
-                System.out.println("CLASIFICACION ID DESPUES " + classification_id);
+                    System.out.println("CLASIFICACION ID DESPUES " + classification_id);
 
-                dataBase.insert("expense", null, register_expense);
+                    dataBase.insert("expense", null, register_expense);
 
+
+                    Cursor consult_classification = dataBase.rawQuery("select * from classification where classification_id=" +classification_id, null);
+
+                    if(consult_classification.moveToFirst()){
+                        actual_limit++;
+
+                        ContentValues modification = new ContentValues();
+                        modification.put("actual_limit", actual_limit);
+
+                        dataBase.update("classification", modification, "classification_id=" + classification_id, null);
+
+                        Toast.makeText(this, "Los datos de la clasificacion se han actualizado", Toast.LENGTH_SHORT).show();
+                    }
+
+                    dataBase.close();
+                    System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
+
+                    Toast.makeText(this, "Gasto Agregado", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(ActivityAddExpense.this, MainActivity.class);
+                    startActivity(intent);
+                }
                 dataBase.close();
-                System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
 
-                Toast.makeText(this, "Gasto Agregado", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(ActivityAddExpense.this, MainActivity.class);
-                startActivity(intent);
             }catch (SQLException sqlE){
                 sqlE.printStackTrace();
             }
@@ -126,6 +151,8 @@ public class ActivityAddExpense extends AppCompatActivity {
 
             classification_list_classification.add(classification);
 
+            classification_id = cursor.getInt(0);
+
             Log.i("id", classification.getClassification_id().toString());
             Log.i("Nombre", classification.getNamee());
             Log.i("Limite", classification.getLimitt().toString());
@@ -139,7 +166,7 @@ public class ActivityAddExpense extends AppCompatActivity {
 
         for(int i = 0; i< classification_list_classification.size(); i++){
             list_classification_string.add(classification_list_classification.get(i).getNamee());
-            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
+//            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
     }
 

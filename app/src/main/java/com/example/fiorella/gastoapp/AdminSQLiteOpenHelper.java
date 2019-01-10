@@ -17,18 +17,18 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 //    private static final String TABLE_GENERAL_CONFIGURATION = "create table general_configuration(general_limit integer)";
 
     private static final String TABLE_CLASSIFICATION ="create table classification(classification_id integer primary key autoincrement not null," +
-            " name text not null, limitt int not null)";
+            " name text not null, limitt int not null, actual_limit int not null)";
     private static final String TABLE_EXPENSE ="create table expense(expense_id integer primary key autoincrement not null,\n" +
             "           concept_name text not null, amount real not null, dateb date not null, classification_id int not null,\n" +
             "            FOREIGN KEY (classification_id) references classification(classification_id))";
     private static final String TABLE_GENERAL_CONFIGURATION = "create table general_configuration(general_limit integer)";
 
-    private static final String INSERT1 = "insert into classification(name, limitt)values('Deporte',9 )";
-    private static final String INSERT2 = "insert into classification(name, limitt)values('Comida',3 )";
-    private static final String INSERT3 = "insert into classification(name, limitt)values('Gasolina',5 )";
-    private static final String INSERT4 = "insert into classification(name, limitt)values('Ropa',6 )";
-    private static final String INSERT5 = "insert into classification(name, limitt)values('Entretenimiento',7 )";
-    private static final String INSERT6 = "insert into classification(name, limitt)values('Hogar',5 )";
+    private static final String INSERT1 = "insert into classification(name, limitt, actual_limit)values('Deporte',9,0)";
+    private static final String INSERT2 = "insert into classification(name, limitt, actual_limit)values('Comida',3,0)";
+    private static final String INSERT3 = "insert into classification(name, limitt, actual_limit)values('Gasolina',5,0)";
+    private static final String INSERT4 = "insert into classification(name, limitt, actual_limit)values('Ropa',6,0)";
+    private static final String INSERT5 = "insert into classification(name, limitt, actual_limit)values('Entretenimiento',7,0)";
+    private static final String INSERT6 = "insert into classification(name, limitt, actual_limit)values('Hogar',5,0)";
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
