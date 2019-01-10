@@ -29,4 +29,6 @@
     <string name="general_report">Reporte General</string>
     <string name="classification_report">Reporte por Clasificacion</string>
     <string name="date_report">Reporte por Fecha</string>
+    <string name="total_expense">Gasto Total:</string>
+    <string name="example_total">100.0</string>
 </resources>
