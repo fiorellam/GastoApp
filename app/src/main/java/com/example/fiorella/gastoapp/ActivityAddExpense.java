@@ -88,7 +88,7 @@ public class ActivityAddExpense extends AppCompatActivity {
                     register_expense.put("dateb", date);
                     register_expense.put("classification_id", classification_id);
 
-                    System.out.println("CLASIFICACION ID DESPUES " + classification_id);
+//                    System.out.println("CLASIFICACION ID DESPUES " + classification_id);
 
                     dataBase.insert("expense", null, register_expense);
 
@@ -103,16 +103,18 @@ public class ActivityAddExpense extends AppCompatActivity {
 
                         dataBase.update("classification", modification, "classification_id=" + classification_id, null);
 
-                        Toast.makeText(this, "Los datos de la clasificacion se han actualizado", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(this, "Los datos de la clasificacion se han actualizado", Toast.LENGTH_SHORT).show();
                     }
 
                     dataBase.close();
-                    System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
+//                    System.out.println("concepto: " + concept_string + "\n" + amount_string + "\n" + classification_selection + "\n" + date + "\n");
 
                     Toast.makeText(this, "Gasto Agregado", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(ActivityAddExpense.this, MainActivity.class);
                     startActivity(intent);
+                }else{
+                    Toast.makeText(this, "No se pueden agregar mas gastos en esta categoria, limite excedido", Toast.LENGTH_LONG).show();
                 }
                 dataBase.close();
 
@@ -153,9 +155,9 @@ public class ActivityAddExpense extends AppCompatActivity {
 
             classification_id = cursor.getInt(0);
 
-            Log.i("id", classification.getClassification_id().toString());
-            Log.i("Nombre", classification.getNamee());
-            Log.i("Limite", classification.getLimitt().toString());
+//            Log.i("id", classification.getClassification_id().toString());
+//            Log.i("Nombre", classification.getNamee());
+//            Log.i("Limite", classification.getLimitt().toString());
         }
         getList();
         dataBase.close();

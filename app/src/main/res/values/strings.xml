@@ -24,4 +24,9 @@
     <string name="button_delete">Eliminar</string>
 
     <string name="expenses">Gastos Hechos</string>
+    <string name="reports">Reportes</string>
+
+    <string name="general_report">Reporte General</string>
+    <string name="classification_report">Reporte por Clasificacion</string>
+    <string name="date_report">Reporte por Fecha</string>
 </resources>

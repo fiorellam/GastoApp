@@ -89,4 +89,8 @@ public class MainActivity extends AppCompatActivity {
 //            System.out.println("LALALALALALALALA" + list_expense_string.get(i));
         }
     }
+
+    public void goToReports(View view){
+        startActivity(new Intent(MainActivity.this, ActivityReports.class));
+    }
 }

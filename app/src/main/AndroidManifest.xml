@@ -21,7 +21,11 @@
         <activity android:name=".ActivityExpensesClassification" />
         <activity android:name=".ActivityAddClassification" />
         <activity android:name=".ActivityGeneralLimit" />
-        <activity android:name=".ActivityEditClassification"></activity>
+        <activity android:name=".ActivityEditClassification" />
+        <activity android:name=".ActivityReports" />
+        <activity android:name=".ActivityGeneralReport" />
+        <activity android:name=".ActivityClassificationReport" />
+        <activity android:name=".ActivityDateReport"></activity>
     </application>
 
 </manifest>

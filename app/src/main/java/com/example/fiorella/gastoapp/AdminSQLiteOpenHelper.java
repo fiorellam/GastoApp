@@ -23,11 +23,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             "            FOREIGN KEY (classification_id) references classification(classification_id))";
     private static final String TABLE_GENERAL_CONFIGURATION = "create table general_configuration(general_limit integer)";
 
-    private static final String INSERT1 = "insert into classification(name, limitt, actual_limit)values('Deporte',9,0)";
+    private static final String INSERT1 = "insert into classification(name, limitt, actual_limit)values('Deporte',7,0)";
     private static final String INSERT2 = "insert into classification(name, limitt, actual_limit)values('Comida',3,0)";
-    private static final String INSERT3 = "insert into classification(name, limitt, actual_limit)values('Gasolina',5,0)";
-    private static final String INSERT4 = "insert into classification(name, limitt, actual_limit)values('Ropa',6,0)";
-    private static final String INSERT5 = "insert into classification(name, limitt, actual_limit)values('Entretenimiento',7,0)";
+    private static final String INSERT3 = "insert into classification(name, limitt, actual_limit)values('Gasolina',2,0)";
+    private static final String INSERT4 = "insert into classification(name, limitt, actual_limit)values('Ropa',1,0)";
+    private static final String INSERT5 = "insert into classification(name, limitt, actual_limit)values('Entretenimiento',4,0)";
     private static final String INSERT6 = "insert into classification(name, limitt, actual_limit)values('Hogar',5,0)";
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
