@@ -17,7 +17,6 @@ import com.example.fiorella.gastoapp.R;
 public class ActivityEditClassification extends AppCompatActivity {
 
     private EditText txt_classification, txt_classification_limit;
-    int classification_limit;
     AdminSQLiteOpenHelper admin;
     int id;
 

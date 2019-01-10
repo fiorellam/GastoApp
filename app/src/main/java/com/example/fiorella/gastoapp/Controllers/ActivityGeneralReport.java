@@ -21,14 +21,9 @@ public class ActivityGeneralReport extends AppCompatActivity {
     TextView txt_total_general;
     ArrayList<String> list_expense_string;
     ArrayList<Expense> expense_list_expense;
-    ArrayList<String> string_class;
     Double total_expense;
-//    ArrayList<String> list_expense_string;
-//    ArrayList<Expense> expense_list_expense;
     AdminSQLiteOpenHelper admin;
 
-    String classification_string;
-    int classification_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +35,14 @@ public class ActivityGeneralReport extends AppCompatActivity {
         listView_general = (ListView)findViewById(R.id.listView_general);
         txt_total_general = (TextView)findViewById(R.id.txt_total_classification);
 
+
         total_expense = getTotal();
-        txt_total_general.setText(String.valueOf(total_expense));
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list_expense_string);
         listView_general.setAdapter(adapter);
-        getTotal();
+        txt_total_general.setText(String.valueOf(total_expense));
     }
+
 
     private void consultExpenseList() {
         //Abrimos base de datos en modo lectura y escritura
@@ -65,23 +61,15 @@ public class ActivityGeneralReport extends AppCompatActivity {
             expense.set_amount(cursor.getDouble(2));
             expense.set_date(cursor.getString(3));
 
-            classification_id = cursor.getInt(4);
-            Cursor cursor_classification = dataBase.rawQuery("select * from classification where classification_id="+classification_id,null);
-            while(cursor_classification.moveToNext()){
-//                classification_string = cursor_classification.getString(1);
-//                string_class.add(String.valueOf(classification_string));
-//            System.out.println("HAHAUHDUIHWFIUQAHEFUIEWHFUIEHFUIHWIUFHWEFHWU" + classification_string);
-            }
-//
-
             expense_list_expense.add(expense);
 
-            Log.i("id", String.valueOf(expense.get_id()));
-            Log.i("Nombre",expense.get_concept());
-            Log.i("Monto", String.valueOf(expense.get_amount()));
-            Log.i("Fecha", expense.get_date());
+//            Log.i("id", String.valueOf(expense.get_id()));
+//            Log.i("Nombre",expense.get_concept());
+//            Log.i("Monto", String.valueOf(expense.get_amount()));
+//            Log.i("Fecha", expense.get_date());
         }
         getList();
+        dataBase.close();
     }
 
     private void getList(){
@@ -91,13 +79,15 @@ public class ActivityGeneralReport extends AppCompatActivity {
             list_expense_string.add(
                     "  " + expense_list_expense.get(i).get_concept()
                             + "                "    + expense_list_expense.get(i).get_amount()
-//                            + string_class.get(i)
-//                            + "  " +expense_list_expense.get(i).get_date()
             );
-//            System.out.println("LALALALALALALALA" + list_expense_string.get(i));
         }
     }
 
+
+    /**
+     * Metodo para obtener el total general gastado
+     * @return double gasto total
+     */
     public double getTotal(){
         double amount;
         admin= new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);

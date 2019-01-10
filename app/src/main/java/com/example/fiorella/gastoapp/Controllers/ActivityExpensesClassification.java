@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class ActivityExpensesClassification extends AppCompatActivity {
 
     ListView listView_settings;
-//    String [] options = {"Escuela", "Comida", "Cena", "Desayuno"};
     ArrayList<String> list_classification_string;
     ArrayList<Classification> classification_list_classification;
     AdminSQLiteOpenHelper admin;
@@ -46,12 +45,8 @@ public class ActivityExpensesClassification extends AppCompatActivity {
                 Classification classification = classification_list_classification.get(position);
 
                 Intent intent = new Intent(ActivityExpensesClassification.this, ActivityEditClassification.class);
-//                intent.putExtra("id", classification.getClassification_id());
                 intent.putExtra("classification",classification);
-//                intent.putExtra("limit", classification.getLimitt());
                 startActivity(intent);
-
-                Log.i("NOMBEW", classification.getNamee());
             }
         });
 
@@ -78,9 +73,9 @@ public class ActivityExpensesClassification extends AppCompatActivity {
 
             classification_list_classification.add(classification);
 
-            Log.i("id", classification.getClassification_id().toString());
-            Log.i("Nombre", classification.getNamee());
-            Log.i("Limite", classification.getLimitt().toString());
+//            Log.i("id", classification.getClassification_id().toString());
+//            Log.i("Nombre", classification.getNamee());
+//            Log.i("Limite", classification.getLimitt().toString());
         }
         getList();
     }
@@ -90,7 +85,6 @@ public class ActivityExpensesClassification extends AppCompatActivity {
 
         for(int i = 0; i< classification_list_classification.size(); i++){
             list_classification_string.add(classification_list_classification.get(i).getNamee());
-//            System.out.println("LALALALALALALALA" + list_classification_string.get(i));
         }
     }
 

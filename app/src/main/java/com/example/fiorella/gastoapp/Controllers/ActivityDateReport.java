@@ -24,14 +24,8 @@ public class ActivityDateReport extends AppCompatActivity {
     TextView txt_total_general;
     ArrayList<String> list_expense_string;
     ArrayList<Expense> expense_list_expense;
-    ArrayList<String> string_class;
-    Double total_expense;
     EditText date1, date2;
-    //    ArrayList<String> list_expense_string;
-//    ArrayList<Expense> expense_list_expense;
     AdminSQLiteOpenHelper admin;
-
-    String classification_string;
     int classification_id;
 
     @Override
@@ -63,13 +57,6 @@ public class ActivityDateReport extends AppCompatActivity {
             expense.set_date(cursor.getString(3));
 
             classification_id = cursor.getInt(4);
-            Cursor cursor_classification = dataBase.rawQuery("select * from classification where classification_id="+classification_id,null);
-            while(cursor_classification.moveToNext()){
-//                classification_string = cursor_classification.getString(1);
-//                string_class.add(String.valueOf(classification_string));
-//            System.out.println("HAHAUHDUIHWFIUQAHEFUIEWHFUIEHFUIHWIUFHWEFHWU" + classification_string);
-            }
-//
 
             expense_list_expense.add(expense);
 
@@ -87,11 +74,7 @@ public class ActivityDateReport extends AppCompatActivity {
         for(int i = 0; i< expense_list_expense.size(); i++){
             list_expense_string.add(
                     "  " + expense_list_expense.get(i).get_concept()
-                            + "                "    + expense_list_expense.get(i).get_amount()
-//                            + string_class.get(i)
-//                            + "  " +expense_list_expense.get(i).get_date()
-            );
-//            System.out.println("LALALALALALALALA" + list_expense_string.get(i));
+                            + "                "    + expense_list_expense.get(i).get_amount());
         }
     }
 
@@ -122,7 +105,5 @@ public class ActivityDateReport extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Se deben ingresar las fechas", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 }

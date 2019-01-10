@@ -24,6 +24,11 @@ public class ActivityGeneralLimit extends AppCompatActivity {
         txt_limit = (EditText)findViewById(R.id.txt_limit);
     }
 
+
+    /**
+     * Metodo para guardar el limite general de gastos
+     * @param view
+     */
     public void saveGeneralLimit(View view){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
         SQLiteDatabase dataBase = admin.getWritableDatabase();

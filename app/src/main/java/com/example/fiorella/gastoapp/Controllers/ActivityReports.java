@@ -7,6 +7,11 @@ import android.view.View;
 
 import com.example.fiorella.gastoapp.R;
 
+/**
+ * Controlador de layout activity_reports
+ */
+
+
 public class ActivityReports extends AppCompatActivity {
 
     @Override
@@ -15,6 +20,10 @@ public class ActivityReports extends AppCompatActivity {
         setContentView(R.layout.activity_reports);
     }
 
+    /**
+     * Metodos que inician su Actividad correspondiente
+     * @param view
+     */
     public void goToGeneralReport(View view){
         startActivity(new Intent(ActivityReports.this, ActivityGeneralReport.class));
     }
@@ -23,5 +32,10 @@ public class ActivityReports extends AppCompatActivity {
     }
     public void goToDateReport(View view){
         startActivity(new Intent(ActivityReports.this, ActivityDateReport.class));
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(ActivityReports.this, MainActivity.class));
     }
 }

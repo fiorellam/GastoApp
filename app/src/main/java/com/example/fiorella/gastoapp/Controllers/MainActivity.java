@@ -17,6 +17,10 @@ import com.example.fiorella.gastoapp.R;
 
 import java.util.ArrayList;
 
+/**
+ * Controlador de layout ActivityMain
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab_addb, fab_config;
@@ -30,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
-
         listView_espenses = (ListView)findViewById(R.id.listView_expenses);
 
         consultExpenseList();
+
         fab_addb = (FloatingActionButton)findViewById(R.id.fab_add);
         fab_config = (FloatingActionButton)findViewById(R.id.fab_setting);
         fab_config.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Metodo que hace consulta a la base de datos y va asignando sus valores
+     * al Arraylist expense_list_expense
+     */
     private void consultExpenseList() {
+        admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
         //Abrimos base de datos en modo lectura y escritura
         SQLiteDatabase dataBase = admin.getReadableDatabase();
 
@@ -71,29 +79,30 @@ public class MainActivity extends AppCompatActivity {
             expense.set_date(cursor.getString(3));
 
             expense_list_expense.add(expense);
-
-            Log.i("id", String.valueOf(expense.get_id()));
-            Log.i("Nombre",expense.get_concept());
-            Log.i("Monto", String.valueOf(expense.get_amount()));
-            Log.i("Fecha", expense.get_date());
         }
+        dataBase.close();
         getList();
     }
 
+    /**
+     * Metodo que recorre el ArrayList expense_list_expense y asigna
+     * valores a Arraylist list_expense_string para poder llenar listView
+     */
     private void getList(){
         list_expense_string = new ArrayList<String>();
 
         for(int i = 0; i< expense_list_expense.size(); i++){
             list_expense_string.add(
-//                    "id: " + expense_list_expense.get(i).get_id() +
                             "  " + expense_list_expense.get(i).get_concept()
                             + "                "    + expense_list_expense.get(i).get_amount()
-//                            + "  " +expense_list_expense.get(i).get_date()
             );
-//            System.out.println("LALALALALALALALA" + list_expense_string.get(i));
         }
     }
 
+    /**
+     * Metodo que va a ActivityReports
+     * @param view El parametro view define el componente recibido
+     */
     public void goToReports(View view){
         startActivity(new Intent(MainActivity.this, ActivityReports.class));
     }
