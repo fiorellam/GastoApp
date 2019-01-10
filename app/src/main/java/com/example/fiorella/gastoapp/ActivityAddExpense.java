@@ -65,18 +65,18 @@ public class ActivityAddExpense extends AppCompatActivity {
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
             try{
 
-                Cursor cursor_expense = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
-                while(cursor_expense.moveToNext()){
-                    classification_id = cursor_expense.getInt(0);
-                    classification_name = cursor_expense.getString(1);
+                Cursor cursor_classification = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
+                while(cursor_classification.moveToNext()){
+                    classification_id = cursor_classification.getInt(0);
+                    classification_name = cursor_classification.getString(1);
 
-                    classification_limi = cursor_expense.getInt(2);
-                    actual_limit = cursor_expense.getInt(3);
+                    classification_limi = cursor_classification.getInt(2);
+                    actual_limit = cursor_classification.getInt(3);
 
                     Log.i("id", classification_id.toString());
                     Log.i("Nombre", classification_name);
-                    Log.i("Limite", String.valueOf(cursor_expense.getInt(2)));
-                    Log.i("Limite Actual", String.valueOf(cursor_expense.getInt(3)));
+                    Log.i("Limite", String.valueOf(cursor_classification.getInt(2)));
+                    Log.i("Limite Actual", String.valueOf(cursor_classification.getInt(3)));
                 }
                 getList();
 

@@ -31,4 +31,7 @@
     <string name="date_report">Reporte por Fecha</string>
     <string name="total_expense">Gasto Total:</string>
     <string name="example_total">100.0</string>
+
+    <string name="date1">YYYY-MM-DD</string>
+    <string name="date2">2019-07-12</string>
 </resources>

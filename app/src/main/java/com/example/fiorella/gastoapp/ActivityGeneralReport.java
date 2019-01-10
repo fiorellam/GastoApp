@@ -34,7 +34,7 @@ public class ActivityGeneralReport extends AppCompatActivity {
         consultExpenseList();
 
         listView_general = (ListView)findViewById(R.id.listView_general);
-        txt_total_general = (TextView)findViewById(R.id.txt_total_general);
+        txt_total_general = (TextView)findViewById(R.id.txt_total_classification);
 
         total_expense = getTotal();
         txt_total_general.setText(String.valueOf(total_expense));
