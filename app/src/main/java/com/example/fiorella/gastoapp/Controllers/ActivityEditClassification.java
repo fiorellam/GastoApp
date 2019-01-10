@@ -1,4 +1,4 @@
-package com.example.fiorella.gastoapp;
+package com.example.fiorella.gastoapp.Controllers;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.fiorella.gastoapp.Database.AdminSQLiteOpenHelper;
+import com.example.fiorella.gastoapp.Model.Classification;
+import com.example.fiorella.gastoapp.R;
 
 public class ActivityEditClassification extends AppCompatActivity {
 

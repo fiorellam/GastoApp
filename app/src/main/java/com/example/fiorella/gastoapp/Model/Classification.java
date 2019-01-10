@@ -1,4 +1,4 @@
-package com.example.fiorella.gastoapp;
+package com.example.fiorella.gastoapp.Model;
 
 import java.io.Serializable;
 

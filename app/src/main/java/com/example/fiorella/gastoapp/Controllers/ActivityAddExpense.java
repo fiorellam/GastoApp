@@ -1,4 +1,4 @@
-package com.example.fiorella.gastoapp;
+package com.example.fiorella.gastoapp.Controllers;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -13,6 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.fiorella.gastoapp.Database.AdminSQLiteOpenHelper;
+import com.example.fiorella.gastoapp.Model.Classification;
+import com.example.fiorella.gastoapp.R;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

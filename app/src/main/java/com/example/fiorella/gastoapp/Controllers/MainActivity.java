@@ -1,4 +1,4 @@
-package com.example.fiorella.gastoapp;
+package com.example.fiorella.gastoapp.Controllers;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,6 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.fiorella.gastoapp.Database.AdminSQLiteOpenHelper;
+import com.example.fiorella.gastoapp.Model.Expense;
+import com.example.fiorella.gastoapp.R;
 
 import java.util.ArrayList;
 

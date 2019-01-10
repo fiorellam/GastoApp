@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityDateReport">
+    tools:context=".Controllers.ActivityDateReport">
 
     <TextView
         android:id="@+id/textView4"
@@ -81,11 +81,9 @@
         android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/editText"
-        android:layout_alignParentEnd="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="62dp"
         android:layout_toEndOf="@+id/editText"
         android:layout_toRightOf="@+id/editText"
         android:ems="10"

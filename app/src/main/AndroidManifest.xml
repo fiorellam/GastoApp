@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Controllers.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityAddExpense" />
-        <activity android:name=".ActivityConfiguration" />
-        <activity android:name=".ActivityExpensesClassification" />
-        <activity android:name=".ActivityAddClassification" />
-        <activity android:name=".ActivityGeneralLimit" />
-        <activity android:name=".ActivityEditClassification" />
-        <activity android:name=".ActivityReports" />
-        <activity android:name=".ActivityGeneralReport" />
-        <activity android:name=".ActivityClassificationReport" />
-        <activity android:name=".ActivityDateReport"></activity>
+        <activity android:name=".Controllers.ActivityAddExpense" />
+        <activity android:name=".Controllers.ActivityConfiguration" />
+        <activity android:name=".Controllers.ActivityExpensesClassification" />
+        <activity android:name=".Controllers.ActivityAddClassification" />
+        <activity android:name=".Controllers.ActivityGeneralLimit" />
+        <activity android:name=".Controllers.ActivityEditClassification" />
+        <activity android:name=".Controllers.ActivityReports" />
+        <activity android:name=".Controllers.ActivityGeneralReport" />
+        <activity android:name=".Controllers.ActivityClassificationReport" />
+        <activity android:name=".Controllers.ActivityDateReport"></activity>
     </application>
 
 </manifest>

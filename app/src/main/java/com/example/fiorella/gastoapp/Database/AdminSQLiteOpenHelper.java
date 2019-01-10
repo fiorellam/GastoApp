@@ -1,4 +1,4 @@
-package com.example.fiorella.gastoapp;
+package com.example.fiorella.gastoapp.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
