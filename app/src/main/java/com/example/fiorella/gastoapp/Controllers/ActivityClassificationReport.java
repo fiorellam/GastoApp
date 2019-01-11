@@ -118,7 +118,7 @@ public class ActivityClassificationReport extends AppCompatActivity {
         }
         catch(SQLException sql){
             sql.printStackTrace();
-            Toast.makeText(this, "No existen gastos en esta clasificacion", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "No existen gastos en esta clasificacion", Toast.LENGTH_LONG).show();
             }
 
 //            Toast.makeText(this, "METODO CONSULT", Toast.LENGTH_LONG).show();
@@ -137,8 +137,7 @@ public class ActivityClassificationReport extends AppCompatActivity {
 //                            + "  " +expense_list_expense.get(i).get_date()
             );
 //            System.out.println("LALALALALALALALA" + list_expense_string.get(i));
-            Log.i("AYUDAAA", "eindfceabnfuaer");
-            System.out.println("QUE PEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO1!!!!!!!!!!!!!");
+//            System.out.println("QUE PEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO1!!!!!!!!!!!!!");
         }
     }
 

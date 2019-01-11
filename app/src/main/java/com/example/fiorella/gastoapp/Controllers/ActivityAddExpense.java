@@ -51,7 +51,10 @@ public class ActivityAddExpense extends AppCompatActivity {
         sp_classification.setAdapter(adapter);
     }
 
-
+    /**
+     * Metodo para agregar nuevo gasto
+     * @param view recibe componente
+     */
     public void addNewExpense(View view){
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "gastoApp", null, 1);
@@ -61,13 +64,14 @@ public class ActivityAddExpense extends AppCompatActivity {
         String concept_string = txt_concept.getText().toString();
         String amount_string = txt_amount.getText().toString();
         String classification_selection = sp_classification.getSelectedItem().toString();
-        String date = setDate();
+
 
         Integer classification_id = 0;
         String classification_name;
 
 
         if(!concept_string.equals("") && !amount_string.equals("") && !classification_selection.equals("")){
+            String date = setDate();
             try{
 
                 Cursor cursor_classification = dataBase.rawQuery("select * from classification where name =" + "'"+ classification_selection + "'", null);
